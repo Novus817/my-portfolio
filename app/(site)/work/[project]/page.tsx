@@ -11,7 +11,6 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
   const slug = params.project;
   const project = await getProject(slug);
-  revalidatePath(params.project);
 
   return {
     title: `Anthony Marrello | Portfolio | ${project.name}`,
@@ -23,6 +22,7 @@ export async function generateMetadata({ params }: Props) {
 export default async function Project({ params }: Props) {
   const slug = params.project;
   const project = await getProject(slug);
+  revalidatePath(params.project);
 
   return (
     <div>
