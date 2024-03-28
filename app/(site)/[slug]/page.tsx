@@ -21,6 +21,7 @@ export default async function Page({ params }: Props) {
   const page = await getPage(params.slug);
   const projects = await getProjects();
   revalidatePath(params.project);
+  revalidatePath('/work/${project}');
 
   return (
     <div>
