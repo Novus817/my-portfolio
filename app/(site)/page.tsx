@@ -1,6 +1,7 @@
 import { getProjects } from '@/sanity/sanity-utils';
 import Image from 'next/image';
 import Link from 'next/link';
+import { revalidatePath } from 'next/cache';
 import {
   FaLinkedin,
   FaGithub,
@@ -14,8 +15,13 @@ import {
   FaCode,
 } from 'react-icons/fa6';
 
-export default async function Home() {
+type Props = {
+  params: { project: string };
+};
+
+export default async function Home({ params }: Props) {
   const projects = await getProjects();
+  revalidatePath(params.project);
 
   return (
     <div className="container mx-auto">
@@ -33,7 +39,7 @@ export default async function Home() {
 
       <div className="flex flex-col items-center sm:w-[55vw] md:w-[50vw] lg:w-[35vw] xl:w-[30vw] cred p-5 mb-3 sm:mb-10 md:mb-14 mx-auto">
         <h2 className="text-lg text-center sm:text-xl text-white font-bold mb-3">
-          Front-End/WordPress Developer
+          Front-End Developer
         </h2>
 
         <div className="flex flex-row justify-center mb-5">
