@@ -21,7 +21,7 @@ type Props = {
 
 export default async function Home({ params }: Props) {
   const projects = await getProjects();
-  revalidatePath('/work');
+  revalidatePath('/work[slug]');
 
   return (
     <div className="container mx-auto">
