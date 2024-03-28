@@ -2,6 +2,7 @@ import { getProject } from '@/sanity/sanity-utils';
 import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { revalidatePath } from 'next/cache';
 
 type Props = {
   params: { project: string };
@@ -10,6 +11,7 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
   const slug = params.project;
   const project = await getProject(slug);
+  revalidatePath(params.project);
 
   return {
     title: `Anthony Marrello | Portfolio | ${project.name}`,
