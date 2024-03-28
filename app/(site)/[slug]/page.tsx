@@ -2,9 +2,10 @@ import { getPage, getProjects } from '@/sanity/sanity-utils';
 import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { revalidatePath } from 'next/cache';
 
 type Props = {
-  params: { slug: string; title: string };
+  params: { slug: string; title: string; project: string };
 };
 
 export async function generateMetadata({ params }: Props) {
@@ -19,6 +20,7 @@ export async function generateMetadata({ params }: Props) {
 export default async function Page({ params }: Props) {
   const page = await getPage(params.slug);
   const projects = await getProjects();
+  revalidatePath(params.project);
 
   return (
     <div>
@@ -40,10 +42,8 @@ export default async function Page({ params }: Props) {
 
       {page.slug === 'contact' && (
         <div className="my-4 grid grid-cols">
-          <h2>Can be reached at this email:</h2>
-          <a href="ma&#105;l&#116;o&#58;&#37;&#54;&#49;pm&#56;1&#55;&#64;%67mail&#46;%63o&#109;">
-            &#97;pm817&#64;g&#109;ail&#46;c&#111;m
-          </a>
+          <h2>Contact Me</h2>
+          <form></form>
         </div>
       )}
 
@@ -53,7 +53,7 @@ export default async function Page({ params }: Props) {
 
       {page.slug === 'work' && (
         <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {projects.map((project) => (
+          {projects.map(project => (
             <Link
               href={`/work/${project.slug}`}
               key={project._id}
