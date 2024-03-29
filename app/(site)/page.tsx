@@ -16,12 +16,11 @@ import {
 } from 'react-icons/fa6';
 
 type Props = {
-  params: { slug: string; title: string; project: string };
+  params: { slug: string; title: string };
 };
 
 export default async function Home({ params }: Props) {
   const projects = await getProjects();
-  revalidatePath('/work/[project]');
 
   return (
     <div className="container mx-auto">
