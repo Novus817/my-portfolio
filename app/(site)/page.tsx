@@ -38,7 +38,7 @@ export default async function Home({ params }: Props) {
 
       <div className="flex flex-col items-center sm:w-[55vw] md:w-[50vw] lg:w-[35vw] xl:w-[30vw] cred p-5 mb-3 sm:mb-10 md:mb-14 mx-auto">
         <h2 className="text-lg text-center sm:text-xl text-white font-bold mb-3">
-          Front-End Developer
+          Full-Stack Developer
         </h2>
 
         <div className="flex flex-row justify-center mb-5">
