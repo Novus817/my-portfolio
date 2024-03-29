@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { revalidatePath } from 'next/cache';
 
 type Props = {
-  params: { slug: string; title: string; project: string };
+  params: { slug: string; title: string };
 };
 
 export async function generateMetadata({ params }: Props) {
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props) {
 export default async function Page({ params }: Props) {
   const page = await getPage(params.slug);
   const projects = await getProjects();
-  revalidatePath(params.project);
+  revalidatePath('/work/[project]');
 
   return (
     <div>
