@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props) {
 export default async function Page({ params }: Props) {
   const page = await getPage(params.slug);
   const projects = await getProjects();
-  revalidatePath('/work[project]');
+  revalidatePath(params.project);
 
   return (
     <div>
