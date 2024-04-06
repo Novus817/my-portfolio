@@ -3,6 +3,7 @@ import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { revalidatePath } from 'next/cache';
+import { FaEnvelope } from 'react-icons/fa6';
 
 type Props = {
   params: { slug: string; title: string };
@@ -39,11 +40,21 @@ export default async function Page({ params }: Props) {
           />
         </div>
       )}
-
+      {/* sm:h-[1.5rem] sm:w-[2rem] */}
       {page.slug === 'contact' && (
         <div className="my-4 grid grid-cols">
-          <h2>Contact Me</h2>
-          <form></form>
+          <h2 className="mb-5 text-lg">How can I help?</h2>
+          <Link
+            href="mailto:apm817@gmail.com"
+            className="fill-white text-3xl h-[2rem] w-[2rem] mb-10"
+          >
+            <FaEnvelope className="hover:fill-orange-500 transition mb-2 text-3xl" />
+          </Link>
+          <img
+            src="/dev-graphic.svg"
+            className="sm:w-1/2 mx-auto"
+            alt="coding dev illustration"
+          />
         </div>
       )}
 
