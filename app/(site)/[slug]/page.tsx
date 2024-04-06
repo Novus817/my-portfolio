@@ -2,7 +2,6 @@ import { getPage, getProjects } from '@/sanity/sanity-utils';
 import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { revalidatePath } from 'next/cache';
 import { FaEnvelope } from 'react-icons/fa6';
 
 type Props = {
@@ -21,7 +20,6 @@ export async function generateMetadata({ params }: Props) {
 export default async function Page({ params }: Props) {
   const page = await getPage(params.slug);
   const projects = await getProjects();
-  revalidatePath('/work/[project]');
 
   return (
     <div>
