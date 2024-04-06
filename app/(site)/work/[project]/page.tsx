@@ -67,3 +67,4 @@ export default async function Project({ params }: Props) {
 }
 
 export const revalidate = 0;
+export const dynamic = 'force-dynamic';
