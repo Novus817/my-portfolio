@@ -65,7 +65,7 @@ export default async function Home({ params }: Props) {
           </div>
           <div className="flex flex-col ml-4">
             <span className="font-bold border-b-[2px]">
-              Specialties Include:
+              Specialty Skills Include:
             </span>
             <span className="flex flex-row mx-auto">
               <FaHtml5 className="specialty-icon" />{' '}
