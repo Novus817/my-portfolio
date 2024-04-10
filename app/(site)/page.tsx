@@ -1,7 +1,6 @@
 import { getProjects } from '@/sanity/sanity-utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import { revalidatePath } from 'next/cache';
 import {
   FaLinkedin,
   FaGithub,
@@ -21,7 +20,6 @@ type Props = {
 
 export default async function Home({ params }: Props) {
   const projects = await getProjects();
-  revalidatePath(params.project);
 
   return (
     <div className="container mx-auto">
