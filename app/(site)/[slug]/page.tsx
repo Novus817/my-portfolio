@@ -12,8 +12,8 @@ export async function generateMetadata({ params }: Props) {
   const page = await getPage(params.slug);
 
   return {
-    title: `Anthony Marrello | Portfolio | ${page.title}`,
-    description: `My portfolio page for ${page.title}`,
+    title: `Anthony Marrello | Portfolio | ${page?.title}`,
+    description: `My portfolio page for ${page?.title}`,
   };
 }
 
@@ -24,10 +24,10 @@ export default async function Page({ params }: Props) {
   return (
     <div>
       <h1 className="text-orange-800 text-3xl sm:text-4xl md:text-5xl drop-shadow font-extrabold mb-6">
-        {page.title}
+        {page?.title}
       </h1>
 
-      {page.slug === 'about' && (
+      {page?.slug === 'about' && (
         <div className="my-4 grid grid-cols">
           <img
             src="/abc-headshot.jpeg"
@@ -39,7 +39,7 @@ export default async function Page({ params }: Props) {
         </div>
       )}
       {/* sm:h-[1.5rem] sm:w-[2rem] */}
-      {page.slug === 'contact' && (
+      {page?.slug === 'contact' && (
         <div className="my-4 grid grid-cols">
           <h2 className="mb-5 text-lg">How can I help?</h2>
           <Link
@@ -57,10 +57,10 @@ export default async function Page({ params }: Props) {
       )}
 
       <div className="text-lg text-white-700 mt-5">
-        <PortableText value={page.content} />
+        <PortableText value={page?.content} />
       </div>
 
-      {page.slug === 'work' && (
+      {page?.slug === 'work' && (
         <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {projects.map(project => (
             <Link
@@ -79,7 +79,7 @@ export default async function Page({ params }: Props) {
               )}
 
               <div className="mt-2 font-extrabold text-orange-600 text-center sm:text-left">
-                {project.name}
+                {project?.name}
               </div>
             </Link>
           ))}

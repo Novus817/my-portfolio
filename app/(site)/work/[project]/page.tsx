@@ -2,6 +2,8 @@ import { getProject } from '@/sanity/sanity-utils';
 import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 type Props = {
   params: { project: string };
@@ -10,10 +12,11 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
   const slug = params.project;
   const project = await getProject(slug);
+  revalidatePath(params.project);
 
   return {
-    title: `Anthony Marrello | Portfolio | ${project.name}`,
-    description: `A portfolio project of mine for ${project.name}`,
+    title: `Anthony Marrello | Portfolio | ${project?.name}`,
+    description: `A portfolio project of mine for ${project?.name}`,
     // description: `This is the page of ${project.slug.replace(/-/g, ' ')}`,
   };
 }
@@ -34,7 +37,7 @@ export default async function Project({ params }: Props) {
             Go Back
           </Link>
           <Link
-            href={project.url}
+            href={`${project?.url}`}
             title="View Project"
             target="_blank"
             rel="noopener noreferrer"
@@ -45,19 +48,19 @@ export default async function Project({ params }: Props) {
         </div>
 
         <h1 className="text-orange-800 text-2xl sm:text-4xl md:text-5xl drop-shadow font-extrabold">
-          {project.name}
+          {project?.name}
         </h1>
       </header>
 
       {/* content goes here */}
       <div className="mt-5">
-        <PortableText value={project.content} />
+        <PortableText value={project?.content} />
       </div>
 
       {/* image goes here */}
       <Image
-        src={project.image}
-        alt={project.name}
+        src={project?.image}
+        alt={project?.name}
         width={1920}
         height={1080}
         className="mt-10 border-2 border-gray-500 object-cover rounded-xl"
@@ -65,5 +68,3 @@ export default async function Project({ params }: Props) {
     </div>
   );
 }
-
-export const revalidate = 0;
