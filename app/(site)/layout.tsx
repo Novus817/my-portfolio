@@ -1,6 +1,6 @@
 import '../globals.css';
 import Link from 'next/link';
-import { getPages } from '../../sanity/sanity-utils';
+import { getPages } from '@/sanity/sanity-utils';
 import { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 

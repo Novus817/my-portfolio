@@ -1,7 +1,7 @@
 import { createClient, groq } from 'next-sanity';
-import { Project } from '../types/Project';
+import { Project } from '@/types/Project';
 import clientConfig from './config/client-config';
-import { Page } from '../types/Page';
+import { Page } from '@/types/Page';
 import { revalidatePath } from 'next/cache';
 
 export const revalidate = true;
