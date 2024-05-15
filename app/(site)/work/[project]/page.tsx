@@ -1,8 +1,9 @@
-import { getProject } from '../../../../sanity/sanity-utils';
+import { getProject } from '@/sanity/sanity-utils';
 import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { revalidatePath } from 'next/cache';
+import { notFound } from 'next/navigation';
 
 type Props = {
   params: { project: string };
@@ -12,10 +13,13 @@ export async function generateMetadata({ params }: Props) {
   const slug = params.project;
   const project = await getProject(slug);
 
+  if (!project) {
+    return notFound();
+  }
+
   return {
     title: `Anthony Marrello | Portfolio | ${project?.name}`,
     description: `A portfolio project of mine for ${project?.name}`,
-    // description: `This is the page of ${project.slug.replace(/-/g, ' ')}`,
   };
 }
 

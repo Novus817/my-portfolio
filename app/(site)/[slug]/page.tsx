@@ -1,8 +1,9 @@
-import { getPage, getProjects } from '../../../sanity/sanity-utils';
+import { getPage, getProjects } from '@/sanity/sanity-utils';
 import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaEnvelope } from 'react-icons/fa6';
+import { notFound } from 'next/navigation';
 
 type Props = {
   params: { slug: string; title: string };
@@ -20,6 +21,10 @@ export async function generateMetadata({ params }: Props) {
 export default async function Page({ params }: Props) {
   const page = await getPage(params.slug);
   const projects = await getProjects();
+
+  if (!page || !projects) {
+    return notFound();
+  }
 
   return (
     <div>
