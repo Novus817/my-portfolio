@@ -12,7 +12,7 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: 'Anthony Marrello | Portfolio',
   description:
-    'My portfolio project display. Portfolio created with React/Next.js + Sanity.io',
+    'My portfolio project display. Portfolio created with React/Next.js/TypeScript + Sanity.io',
 };
 
 export default async function RootLayout({
