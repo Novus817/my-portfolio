@@ -34,7 +34,7 @@ export default async function Page({ params }: Props) {
 
       {page?.slug === 'about' && (
         <div className="my-4 grid grid-cols">
-          <img
+          <Image
             src="/abc-headshot.jpeg"
             width={640}
             height={360}
@@ -43,7 +43,7 @@ export default async function Page({ params }: Props) {
           />
         </div>
       )}
-      {/* sm:h-[1.5rem] sm:w-[2rem] */}
+
       {page?.slug === 'contact' && (
         <div className="my-4 grid grid-cols">
           <h2 className="mb-5 text-lg">How can I help?</h2>
@@ -53,8 +53,10 @@ export default async function Page({ params }: Props) {
           >
             <FaEnvelope className="hover:fill-orange-500 transition mb-2 text-3xl" />
           </Link>
-          <img
+          <Image
             src="/dev-graphic.svg"
+            width={424}
+            height={334}
             className="sm:w-1/2 mx-auto"
             alt="coding dev illustration"
           />
@@ -67,7 +69,7 @@ export default async function Page({ params }: Props) {
 
       {page?.slug === 'work' && (
         <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {projects.map(project => (
+          {projects.map((project) => (
             <Link
               href={`/work/${project.slug}`}
               key={project._id}
@@ -93,5 +95,3 @@ export default async function Page({ params }: Props) {
     </div>
   );
 }
-
-export const revalidate = 0;
