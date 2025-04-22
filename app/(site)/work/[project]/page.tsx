@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { revalidatePath } from 'next/cache';
 import { notFound } from 'next/navigation';
+import GoBackButton from '../../components/GoBackButton';
 
 type Props = {
   params: { project: string };
@@ -28,17 +29,15 @@ export default async function Project({ params }: Props) {
   const project = await getProject(slug);
   revalidatePath(params.project);
 
+  if (!project) {
+    return notFound();
+  }
+
   return (
     <div>
       <header className="flex flex-col">
         <div className="flex justify-between mb-5 sm:mb-8 md:mb-10">
-          <Link
-            href="/work"
-            title="Go Back"
-            className="bg-orange-700 rounded-md md:rounded-lg text-white font-bold py-2 px-4 whitespace-nowrap hover:bg-orange-800 transition"
-          >
-            Go Back
-          </Link>
+          <GoBackButton />
           <Link
             href={`${project?.url}`}
             title="View Project"
