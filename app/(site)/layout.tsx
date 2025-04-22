@@ -21,9 +21,9 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" className={roboto.className}>
-      <body className="max-w-4xl mx-auto p-4 sm:px-6 lg:px-0">
+      <body>
         <Header />
-        <main className="py-5 small:py-10 flex h-screen">{children}</main>
+        <main className="main-section">{children}</main>
       </body>
     </html>
   );
