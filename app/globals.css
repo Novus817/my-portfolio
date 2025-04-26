@@ -106,6 +106,10 @@ p {
   @apply font-bold border-b-[2px];
 }
 
+.skills-intro {
+  @apply text-lg text-center sm:text-xl text-white font-bold mb-3;
+}
+
 .skills-main {
   @apply flex flex-row mx-auto;
 }

@@ -39,7 +39,7 @@ export default function SpecialtySkills() {
           </Link>
         </div>
         <div className="skills">
-          <span className="skills-title">Specialty Skills Include:</span>
+          <span className="skills-intro">Specialty Skills Include:</span>
           <span className="skills-main">
             <FaHtml5 className="specialty-icon" />{' '}
             <FaCss3Alt className="specialty-icon" />{' '}
