@@ -46,17 +46,14 @@ p {
   @apply text-lg sm:text-xl text-center sm:text-left mb-10 sm:mb-14 tracking-widest;
 }
 
-.main-section {
-  @apply py-5 sm:py-10 flex h-screen;
-  height: 100%;
+/* skills */
+
+.skills-section {
+  @apply flex flex-col items-center sm:w-[55vw] md:w-[50vw] lg:w-[35vw] xl:w-[30vw] cred p-5 mb-3 sm:mb-10 md:mb-14 mx-auto;
 }
 
-@media (min-width: 640px) {
-  p {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    margin-bottom: 1rem;
-  }
+.skills-title {
+  @apply text-lg text-center sm:text-xl text-white font-bold mb-3;
 }
 
 .cred {
@@ -85,10 +82,55 @@ p {
   box-shadow: 0 8px 32px 0 rgba(34, 197, 94, 0.37);
 }
 
+.social-link {
+  @apply fill-white text-3xl;
+}
+
+.social-link-icon {
+  @apply hover:fill-orange-500 transition;
+}
+
+.info-wrap {
+  @apply flex flex-row justify-center mb-5;
+}
+
+.social {
+  @apply flex items-center mr-4;
+}
+
+.skills {
+  @apply flex flex-col ml-4;
+}
+
+.skills-title {
+  @apply font-bold border-b-[2px];
+}
+
+.skills-main {
+  @apply flex flex-row mx-auto;
+}
+
+.icon-links {
+  @apply grid grid-cols-3 gap-5 place-items-center;
+}
+
+.icon-link {
+  @apply border-2 border-gray-500 rounded-full flex flex-col justify-center items-center text-sm h-[96px] w-[96px] sm:h-[110px] sm:w-[110px] hover:border-green-600 transition;
+}
+
+.nav-icon {
+  @apply mb-2 text-3xl;
+}
+
 .specialty-icon {
   font-size: 1.875rem;
   line-height: 2.25rem;
   padding: 2px;
+}
+
+.main-section {
+  @apply py-5 sm:py-10 flex h-screen;
+  height: 100%;
 }
 
 /* recent projects section */
@@ -117,4 +159,12 @@ p {
 
 .go-back-btn {
   @apply bg-orange-700 rounded-md md:rounded-lg text-white font-bold py-2 px-4 whitespace-nowrap hover:bg-orange-800 transition;
+}
+
+@media (min-width: 640px) {
+  p {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    margin-bottom: 1rem;
+  }
 }
