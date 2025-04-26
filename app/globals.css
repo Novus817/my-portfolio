@@ -14,6 +14,24 @@ p {
   margin-bottom: 0.5rem;
 }
 
+/* header */
+
+.header-section {
+  @apply flex items-center justify-between flex-col sm:flex-row sm:mb-5;
+}
+
+.logo-link {
+  @apply mb-4 sm:mb-0 bg-gradient-to-r from-orange-800 to-orange-600 via-orange-700 bg-clip-text text-transparent text-xl font-bold;
+}
+
+.main-nav {
+  @apply flex items-center gap-5 text-orange-600;
+}
+
+.nav-link {
+  @apply border-b-4 border-transparent hover:border-orange-800 transition;
+}
+
 .main-section {
   @apply py-5 sm:py-10 flex h-screen;
   height: 100%;
