@@ -51,17 +51,29 @@ export default function SpecialtySkills() {
       </div>
 
       <div className="icon-links">
-        <Link href="/work" className="icon-link" aria-label="Link to projects">
+        <Link
+          href="/work"
+          className="icon-link"
+          aria-label="Link to my projects page"
+        >
           <FaCode className="nav-icon" />
           my work
         </Link>
 
-        <Link href="/about" className="icon-link" aria-label="Link to projects">
+        <Link
+          href="/about"
+          className="icon-link"
+          aria-label="Link to about me page"
+        >
           <FaCircleInfo className="nav-icon" />
           about me
         </Link>
 
-        <Link href="/contact" className="icon-link" aria-label="Link to projects">
+        <Link
+          href="/contact"
+          className="icon-link"
+          aria-label="Link to my contact page"
+        >
           <FaEnvelope className="nav-icon" />
           contact me
         </Link>
