@@ -1,5 +1,4 @@
 import { getPage } from '@/sanity/sanity-utils';
-import { PortableText } from '@portabletext/react';
 import { notFound } from 'next/navigation';
 import AboutPage from '../components/AboutPage';
 import ContactPage from '../components/ContactPage';
@@ -29,15 +28,11 @@ export default async function Page({ params }: Props) {
     <div>
       <h1 className="page-title">{page?.title}</h1>
 
-      {page?.slug === 'about' && <AboutPage />}
+      {page?.slug === 'about' && <AboutPage content={page?.content} />}
 
-      {page?.slug === 'contact' && <ContactPage />}
+      {page?.slug === 'contact' && <ContactPage content={page?.content} />}
 
-      <div className="content-section">
-        <PortableText value={page?.content} />
-      </div>
-
-      {page?.slug === 'work' && <WorkPage />}
+      {page?.slug === 'work' && <WorkPage content={page?.content} />}
     </div>
   );
 }
