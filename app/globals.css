@@ -169,8 +169,28 @@ p {
 
 /* single project details */
 
+.project-detail-header {
+  @apply flex flex-col;
+}
+
+.project-detail-nav {
+  @apply flex justify-between mb-5 sm:mb-8 md:mb-10;
+}
+
 .go-back-btn {
   @apply bg-orange-700 rounded-md md:rounded-lg text-white font-bold py-2 px-4 whitespace-nowrap hover:bg-orange-800 transition;
+}
+
+.view-project-link {
+  @apply bg-orange-700 rounded-lg text-white font-bold py-2 px-4 whitespace-nowrap hover:bg-orange-800 transition;
+}
+
+.project-detail-title {
+  @apply text-orange-800 text-2xl sm:text-4xl md:text-5xl drop-shadow font-extrabold;
+}
+
+.project-detail-img {
+  @apply mt-10 border-2 border-gray-500 object-cover rounded-xl;
 }
 
 /* page styles */

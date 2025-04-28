@@ -35,23 +35,21 @@ export default async function Project({ params }: Props) {
 
   return (
     <div>
-      <header className="flex flex-col">
-        <div className="flex justify-between mb-5 sm:mb-8 md:mb-10">
+      <header className="project-detail-header">
+        <div className="project-detail-nav">
           <GoBackButton />
           <Link
             href={`${project?.url}`}
             title="View Project"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-orange-700 rounded-lg text-white font-bold py-2 px-4 whitespace-nowrap hover:bg-orange-800 transition"
+            className="view-project-link"
           >
             View Project
           </Link>
         </div>
 
-        <h1 className="text-orange-800 text-2xl sm:text-4xl md:text-5xl drop-shadow font-extrabold">
-          {project?.name}
-        </h1>
+        <h1 className="project-detail-title">{project?.name}</h1>
       </header>
 
       <div className="mt-5">
@@ -64,7 +62,7 @@ export default async function Project({ params }: Props) {
           alt={project.name}
           width={1920}
           height={1080}
-          className="mt-10 border-2 border-gray-500 object-cover rounded-xl"
+          className="project-detail-img"
         />
       )}
     </div>
