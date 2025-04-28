@@ -31,7 +31,7 @@ export default async function Page({ params }: Props) {
       <h1 className="page-title">{page?.title}</h1>
 
       {page?.slug === 'about' && (
-        <div className="img-wrap">
+        <div className="about-img-wrap">
           <Image
             src="/abc-headshot.jpeg"
             width={640}
