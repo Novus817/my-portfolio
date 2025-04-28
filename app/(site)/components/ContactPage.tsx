@@ -1,11 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaEnvelope } from 'react-icons/fa6';
+import { PortableText } from '@portabletext/react';
+import { PortableTextBlock } from 'sanity';
 
-export default function ContactPage() {
+type Props = {
+  content: PortableTextBlock[] | undefined;
+};
+
+export default async function ContactPage({ content }: Props) {
   return (
     <div className="contact-wrap">
-      <h2 className="contact-title">How can I help?</h2>
+      {content && <PortableText value={content} />}
       <Link href="mailto:apm817@gmail.com" className="contact-link">
         <FaEnvelope className="contact-icon" />
       </Link>
