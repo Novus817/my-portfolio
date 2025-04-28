@@ -2,9 +2,9 @@ import { getPage, getProjects } from '@/sanity/sanity-utils';
 import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaEnvelope } from 'react-icons/fa6';
 import { notFound } from 'next/navigation';
 import AboutPage from '../components/AboutPage';
+import ContactPage from '../components/ContactPage';
 
 type Props = {
   params: { slug: string; title: string };
@@ -33,21 +33,7 @@ export default async function Page({ params }: Props) {
 
       {page?.slug === 'about' && <AboutPage />}
 
-      {page?.slug === 'contact' && (
-        <div className="contact-wrap">
-          <h2 className="contact-title">How can I help?</h2>
-          <Link href="mailto:apm817@gmail.com" className="contact-link">
-            <FaEnvelope className="contact-icon" />
-          </Link>
-          <Image
-            src="/dev-graphic.svg"
-            width={424}
-            height={334}
-            className="contact-img"
-            alt="coding dev illustration"
-          />
-        </div>
-      )}
+      {page?.slug === 'contact' && <ContactPage />}
 
       <div className="content-section">
         <PortableText value={page?.content} />
