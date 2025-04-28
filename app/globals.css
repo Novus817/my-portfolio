@@ -12,13 +12,13 @@ p {
   font-size: 1rem; /* 16px */
   line-height: 1.5rem; /* 24px */
   margin-bottom: 0.5rem;
+}
 
-  @media (min-width: 640px) {
-    p {
-      font-size: 1.125rem;
-      line-height: 1.75rem;
-      margin-bottom: 1rem;
-    }
+@media (min-width: 640px) {
+  p {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    margin-bottom: 1rem;
   }
 }
 
