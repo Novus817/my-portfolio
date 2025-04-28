@@ -1,10 +1,9 @@
-import { getPage, getProjects } from '@/sanity/sanity-utils';
+import { getPage } from '@/sanity/sanity-utils';
 import { PortableText } from '@portabletext/react';
-import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import AboutPage from '../components/AboutPage';
 import ContactPage from '../components/ContactPage';
+import WorkPage from '../components/WorkPage';
 
 type Props = {
   params: { slug: string; title: string };
@@ -21,9 +20,8 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function Page({ params }: Props) {
   const page = await getPage(params.slug);
-  const projects = await getProjects();
 
-  if (!page || !projects) {
+  if (!page) {
     return notFound();
   }
 
@@ -39,29 +37,7 @@ export default async function Page({ params }: Props) {
         <PortableText value={page?.content} />
       </div>
 
-      {page?.slug === 'work' && (
-        <div className="work-wrap">
-          {projects.map((project) => (
-            <Link
-              href={`/work/${project.slug}`}
-              key={project._id}
-              className="project-link"
-            >
-              {project.image && (
-                <Image
-                  src={project.image}
-                  alt={project.name}
-                  width={750}
-                  height={300}
-                  className="project-img"
-                />
-              )}
-
-              <div className="project-name">{project?.name}</div>
-            </Link>
-          ))}
-        </div>
-      )}
+      {page?.slug === 'work' && <WorkPage />}
     </div>
   );
 }
