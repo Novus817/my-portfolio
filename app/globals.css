@@ -211,10 +211,6 @@ p {
   @apply my-4 grid;
 }
 
-.contact-title {
-  @apply mb-5 text-lg;
-}
-
 .contact-link {
   @apply fill-white text-3xl h-[2rem] w-[2rem] mb-10;
 }
