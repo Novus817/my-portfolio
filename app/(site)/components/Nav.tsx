@@ -5,7 +5,7 @@ export default async function IntroSection() {
   const pages = await getPages();
 
   return (
-    <nav className="main-nav">
+    <nav className="main-nav" role="navigation" aria-label="Main">
       {pages.reverse().map((page) => (
         <Link key={page._id} href={`/${page.slug}`} className="nav-link">
           {page.title}
