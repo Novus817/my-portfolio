@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaEnvelope } from 'react-icons/fa6';
 import { notFound } from 'next/navigation';
+import AboutPage from '../components/AboutPage';
 
 type Props = {
   params: { slug: string; title: string };
@@ -30,17 +31,7 @@ export default async function Page({ params }: Props) {
     <div>
       <h1 className="page-title">{page?.title}</h1>
 
-      {page?.slug === 'about' && (
-        <div className="about-img-wrap">
-          <Image
-            src="/abc-headshot.jpeg"
-            width={640}
-            height={360}
-            className="about-img"
-            alt="Me at work"
-          />
-        </div>
-      )}
+      {page?.slug === 'about' && <AboutPage />}
 
       {page?.slug === 'contact' && (
         <div className="contact-wrap">
