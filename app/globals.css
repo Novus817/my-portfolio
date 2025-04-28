@@ -12,6 +12,14 @@ p {
   font-size: 1rem; /* 16px */
   line-height: 1.5rem; /* 24px */
   margin-bottom: 0.5rem;
+
+  @media (min-width: 640px) {
+    p {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+      margin-bottom: 1rem;
+    }
+  }
 }
 
 /* header */
@@ -165,10 +173,44 @@ p {
   @apply bg-orange-700 rounded-md md:rounded-lg text-white font-bold py-2 px-4 whitespace-nowrap hover:bg-orange-800 transition;
 }
 
-@media (min-width: 640px) {
-  p {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    margin-bottom: 1rem;
-  }
+/* page styles */
+
+.page-title {
+  @apply text-orange-800 text-3xl sm:text-4xl md:text-5xl drop-shadow font-extrabold mb-6;
+}
+
+.img-wrap {
+  @apply my-4 grid;
+}
+
+.about-img {
+  @apply mx-auto mb-4 max-w-full rounded-lg;
+}
+
+.contact-wrap {
+  @apply my-4 grid;
+}
+
+.contact-title {
+  @apply mb-5 text-lg;
+}
+
+.contact-link {
+  @apply fill-white text-3xl h-[2rem] w-[2rem] mb-10;
+}
+
+.contact-icon {
+  @apply hover:fill-orange-500 transition mb-2 text-3xl;
+}
+
+.contact-img {
+  @apply sm:w-1/2 mx-auto;
+}
+
+.content-section {
+  @apply mt-5 text-lg text-white;
+}
+
+.work-wrap {
+  @apply mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5;
 }

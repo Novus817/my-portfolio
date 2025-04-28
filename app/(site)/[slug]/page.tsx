@@ -28,52 +28,47 @@ export default async function Page({ params }: Props) {
 
   return (
     <div>
-      <h1 className="text-orange-800 text-3xl sm:text-4xl md:text-5xl drop-shadow font-extrabold mb-6">
-        {page?.title}
-      </h1>
+      <h1 className="page-title">{page?.title}</h1>
 
       {page?.slug === 'about' && (
-        <div className="my-4 grid grid-cols">
+        <div className="img-wrap">
           <Image
             src="/abc-headshot.jpeg"
             width={640}
             height={360}
-            className="mx-auto mb-4 max-w-full rounded-lg"
+            className="about-img"
             alt="Me at work"
           />
         </div>
       )}
 
       {page?.slug === 'contact' && (
-        <div className="my-4 grid grid-cols">
-          <h2 className="mb-5 text-lg">How can I help?</h2>
-          <Link
-            href="mailto:apm817@gmail.com"
-            className="fill-white text-3xl h-[2rem] w-[2rem] mb-10"
-          >
-            <FaEnvelope className="hover:fill-orange-500 transition mb-2 text-3xl" />
+        <div className="contact-wrap">
+          <h2 className="contact-title">How can I help?</h2>
+          <Link href="mailto:apm817@gmail.com" className="contact-link">
+            <FaEnvelope className="contact-icon" />
           </Link>
           <Image
             src="/dev-graphic.svg"
             width={424}
             height={334}
-            className="sm:w-1/2 mx-auto"
+            className="contact-img"
             alt="coding dev illustration"
           />
         </div>
       )}
 
-      <div className="text-lg text-white-700 mt-5">
+      <div className="content-section">
         <PortableText value={page?.content} />
       </div>
 
       {page?.slug === 'work' && (
-        <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="work-wrap">
           {projects.map((project) => (
             <Link
               href={`/work/${project.slug}`}
               key={project._id}
-              className="border-2 border-gray-500 rounded-lg p-1 hover:scale-105 hover:border-green-600 transition"
+              className="project-link"
             >
               {project.image && (
                 <Image
@@ -81,13 +76,11 @@ export default async function Page({ params }: Props) {
                   alt={project.name}
                   width={750}
                   height={300}
-                  className="object-cover rounded-lg border border-gray-500"
+                  className="project-img"
                 />
               )}
 
-              <div className="mt-2 font-extrabold text-orange-600 text-center sm:text-left">
-                {project?.name}
-              </div>
+              <div className="project-name">{project?.name}</div>
             </Link>
           ))}
         </div>
