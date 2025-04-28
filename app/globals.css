@@ -234,3 +234,17 @@ p {
 .work-wrap {
   @apply mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5;
 }
+
+/* not found */
+
+.not-found-wrap {
+  @apply flex flex-col justify-center mx-auto my-8;
+}
+
+.not-found-title {
+  @apply text-3xl;
+}
+
+.homepage-link {
+  @apply text-orange-600 border-b-4 border-transparent hover:border-orange-800 transition;
+}
