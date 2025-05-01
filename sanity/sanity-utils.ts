@@ -2,13 +2,12 @@ import { createClient, groq } from 'next-sanity';
 import { Project } from '@/types/Project';
 import clientConfig from './config/client-config';
 import { Page } from '@/types/Page';
-import { revalidatePath } from 'next/cache';
 
 export const revalidate = true;
 
-export async function getProjects(): Promise<Project[]> {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "project"] | order(_createdAt desc){
+export async function getProjects(limit?: number): Promise<Project[]> {
+  try {
+    const query = groq`*[_type == "project"] | order(createdAt desc){
       _id,
       _createdAt,
       name,
@@ -17,13 +16,19 @@ export async function getProjects(): Promise<Project[]> {
       "alt": image.alt,
       url,
       content
-    }`
-  );
+    }${limit ? `[0...${limit}]` : ''}`;
+    const projects = await createClient(clientConfig).fetch(query);
+    return projects || [];
+  } catch (error) {
+    console.error('Error fetching projects:', error);
+    return [];
+  }
 }
 
 export async function getProject(slug: string): Promise<Project> {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "project" && slug.current == $slug][0]{
+  try {
+    const project = await createClient(clientConfig).fetch(
+      groq`*[_type == "project" && slug.current == $slug][0]{
       _id,
       _createdAt,
       name,
@@ -33,30 +38,46 @@ export async function getProject(slug: string): Promise<Project> {
       url,
       content
     }`,
-    { slug }
-  );
+      { slug },
+    );
+  } catch (error) {
+    console.error('Error fetching project:', error);
+    return null;
+  }
 }
 
 export async function getPages(): Promise<Page[]> {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "page"]{
-      _id,
-      _createdAt,
-      title,
-      "slug": slug.current
-    }`
-  );
+  try {
+    const pages = await createClient(clientConfig).fetch(
+      groq`*[_type == "page"]{
+        _id,
+        _createdAt,
+        title,
+        "slug": slug.current
+      }`,
+    );
+    return pages || [];
+  } catch (error) {
+    console.error('Error fetching pages:', error);
+    return [];
+  }
 }
 
 export async function getPage(slug: string): Promise<Page> {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "page" && slug.current == $slug][0]{
+  try {
+    const page = await createClient(clientConfig).fetch(
+      groq`*[_type == "page" && slug.current == $slug][0]{
       _id,
       _createdAt,
       title,
       "slug": slug.current,
       content
     }`,
-    { slug }
-  );
+      { slug },
+    );
+    return page || null;
+  } catch (error) {
+    console.error('Error fetching page:', error);
+    return null;
+  }
 }
