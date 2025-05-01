@@ -1,13 +1,13 @@
 import { createClient, groq } from 'next-sanity';
 import { Project } from '@/types/Project';
-import clientConfig from './config/client-config';
 import { Page } from '@/types/Page';
+import clientConfig from './config/client-config';
 
 export const revalidate = true;
 
 export async function getProjects(limit?: number): Promise<Project[]> {
   try {
-    const query = groq`*[_type == "project"] | order(createdAt desc){
+    const query = groq`*[_type == "project"] | order(_createdAt desc){
       _id,
       _createdAt,
       name,
@@ -40,6 +40,7 @@ export async function getProject(slug: string): Promise<Project> {
     }`,
       { slug },
     );
+    return project || null;
   } catch (error) {
     console.error('Error fetching project:', error);
     return null;
