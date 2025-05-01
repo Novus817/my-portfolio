@@ -1,17 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getProjects } from '@/sanity/sanity-utils';
 import { PortableText } from '@portabletext/react';
 import { PortableTextBlock } from 'sanity';
+import { Project } from '@/types/Project';
 
 type Props = {
   content: PortableTextBlock[] | undefined;
+  projects: Project[] | null;
 };
 
-export default async function WorkPage({ content }: Props) {
-  const projects = await getProjects();
-
+export default function WorkPage({ content, projects }: Props) {
   if (!projects) {
     return notFound();
   }
@@ -19,7 +18,7 @@ export default async function WorkPage({ content }: Props) {
   return (
     <>
       <div className="content-section">
-        <PortableText value={content} />
+        {content && <PortableText value={content} />}
       </div>
       <div className="work-wrap">
         {projects.map((project) => (
@@ -31,14 +30,14 @@ export default async function WorkPage({ content }: Props) {
             {project.image && (
               <Image
                 src={project.image}
-                alt={project.name}
+                alt={project.alt || project.name}
                 width={750}
                 height={300}
                 className="project-img"
               />
             )}
 
-            <div className="project-name">{project?.name}</div>
+            <div className="project-name">{project.name}</div>
           </Link>
         ))}
       </div>
