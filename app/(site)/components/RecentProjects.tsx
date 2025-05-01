@@ -1,15 +1,17 @@
-import { getProjects } from '@/sanity/sanity-utils';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Project } from '@/types/Project';
 
-export default async function RecentProjects() {
-  const projects = await getProjects();
+type Props = {
+  projects: Project[];
+};
 
+export default async function RecentProjects({ projects }: Props) {
   return (
     <>
       <h2 className="recent-projects-heading">Recent Projects</h2>
       <div className="recent-project">
-        {projects.slice(0, 3).map((project) => (
+        {projects.map((project) => (
           <Link
             href={`/work/${project.slug}`}
             key={project._id}
@@ -18,7 +20,7 @@ export default async function RecentProjects() {
             {project.image && (
               <Image
                 src={project.image}
-                alt={project.name}
+                alt={project.name || project.name}
                 width={750}
                 height={300}
                 className="project-img"
