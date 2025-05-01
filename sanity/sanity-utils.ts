@@ -29,15 +29,15 @@ export async function getProject(slug: string): Promise<Project> {
   try {
     const project = await createClient(clientConfig).fetch(
       groq`*[_type == "project" && slug.current == $slug][0]{
-      _id,
-      _createdAt,
-      name,
-      "slug": slug.current,
-      "image": image.asset->url,
-      "alt": image.alt,
-      url,
-      content
-    }`,
+        _id,
+        _createdAt,
+        name,
+        "slug": slug.current,
+        "image": image.asset->url,
+        "alt": image.alt,
+        url,
+        content
+      }`,
       { slug },
     );
     return project || null;
@@ -68,12 +68,12 @@ export async function getPage(slug: string): Promise<Page> {
   try {
     const page = await createClient(clientConfig).fetch(
       groq`*[_type == "page" && slug.current == $slug][0]{
-      _id,
-      _createdAt,
-      title,
-      "slug": slug.current,
-      content
-    }`,
+        _id,
+        _createdAt,
+        title,
+        "slug": slug.current,
+        content
+      }`,
       { slug },
     );
     return page || null;
