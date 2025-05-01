@@ -20,7 +20,7 @@ export default async function RecentProjects({ projects }: Props) {
             {project.image && (
               <Image
                 src={project.image}
-                alt={project.name || project.name}
+                alt={project.alt || project.name}
                 width={750}
                 height={300}
                 className="project-img"
