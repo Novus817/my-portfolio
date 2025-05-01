@@ -1,17 +1,17 @@
+import { getProjects } from '@/sanity/sanity-utils';
 import IntroSection from './components/IntroSection';
 import SpecialtySkills from './components/SpecialtySkills';
 import RecentProjects from './components/RecentProjects';
 
-type Props = {
-  params: { slug: string; title: string; project: string };
-};
+export default async function Home() {
+  // Fetch 3 newest projects
+  const projects = await getProjects(3);
 
-export default async function Home({ params }: Props) {
   return (
     <div className="container mx-auto">
       <IntroSection />
       <SpecialtySkills />
-      <RecentProjects />
+      <RecentProjects projects={projects} />
     </div>
   );
 }
