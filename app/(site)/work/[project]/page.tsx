@@ -2,7 +2,6 @@ import { getProject } from '@/sanity/sanity-utils';
 import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { revalidatePath } from 'next/cache';
 import { notFound } from 'next/navigation';
 import GoBackButton from '../../components/GoBackButton';
 
@@ -11,23 +10,23 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props) {
-  const slug = params.project;
-  const project = await getProject(slug);
+  const project = await getProject(params.project);
 
   if (!project) {
-    return notFound();
+    return {
+      title: 'Anthony Marrello | Portfolio | Not Found',
+      description: 'Project not found',
+    };
   }
 
   return {
-    title: `Anthony Marrello | Portfolio | ${project?.name}`,
-    description: `A portfolio project of mine for ${project?.name}`,
+    title: `Anthony Marrello | Portfolio | ${project.name}`,
+    description: `A portfolio project of mine for ${project.name}`,
   };
 }
 
 export default async function Project({ params }: Props) {
-  const slug = params.project;
-  const project = await getProject(slug);
-  revalidatePath(params.project);
+  const project = await getProject(params.project);
 
   if (!project) {
     return notFound();
@@ -39,7 +38,7 @@ export default async function Project({ params }: Props) {
         <div className="project-detail-nav">
           <GoBackButton />
           <Link
-            href={`${project?.url}`}
+            href={`${project.url}`}
             title="View Project"
             target="_blank"
             rel="noopener noreferrer"
@@ -49,17 +48,17 @@ export default async function Project({ params }: Props) {
           </Link>
         </div>
 
-        <h1 className="project-detail-title">{project?.name}</h1>
+        <h1 className="project-detail-title">{project.name}</h1>
       </header>
 
       <div className="mt-5">
-        <PortableText value={project?.content} />
+        <PortableText value={project.content} />
       </div>
 
       {project.image && (
         <Image
           src={project.image}
-          alt={project.name}
+          alt={project.alt || project.name}
           width={1920}
           height={1080}
           className="project-detail-img"
