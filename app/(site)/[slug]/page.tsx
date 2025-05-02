@@ -48,3 +48,5 @@ export default async function Page({ params }: Props) {
     </div>
   );
 }
+
+export const revalidate = 60;
