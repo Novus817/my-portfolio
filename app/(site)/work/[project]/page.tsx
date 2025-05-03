@@ -1,4 +1,4 @@
-import { getProject } from '@/sanity/sanity-utils';
+import { getProject, urlFor } from '@/sanity/sanity-utils';
 import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -57,10 +57,11 @@ export default async function Project({ params }: Props) {
 
       {project.image && (
         <Image
-          src={project.image}
+          src={urlFor(project.image).width(1920).quality(80).url()}
           alt={project.alt || project.name}
           width={1920}
           height={1080}
+          sizes="(max-width: 768px) 100vw, 1920px"
           className="project-detail-img"
         />
       )}

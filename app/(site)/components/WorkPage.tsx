@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PortableText } from '@portabletext/react';
 import { PortableTextBlock } from 'sanity';
+import { urlFor } from '@/sanity/sanity-utils';
 import { Project } from '@/types/Project';
 
 type Props = {
@@ -29,10 +30,11 @@ export default function WorkPage({ content, projects }: Props) {
           >
             {project.image && (
               <Image
-                src={project.image}
+                src={urlFor(project.image).width(750).quality(80).url()}
                 alt={project.alt || project.name}
                 width={750}
                 height={300}
+                sizes="(max-width: 768px) 100vw, 750px"
                 className="project-img"
               />
             )}

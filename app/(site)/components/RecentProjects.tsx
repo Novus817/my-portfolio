@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Project } from '@/types/Project';
+import { urlFor } from '@/sanity/sanity-utils';
 
 type Props = {
   projects: Project[];
@@ -19,10 +20,11 @@ export default async function RecentProjects({ projects }: Props) {
           >
             {project.image && (
               <Image
-                src={project.image}
+                src={urlFor(project.image).width(750).quality(80).url()}
                 alt={project.alt || project.name}
                 width={750}
                 height={300}
+                sizes="(max-width: 768px) 100vw, 750px"
                 className="project-img"
               />
             )}
