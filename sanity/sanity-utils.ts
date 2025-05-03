@@ -2,8 +2,15 @@ import { createClient, groq } from 'next-sanity';
 import { Project } from '@/types/Project';
 import { Page } from '@/types/Page';
 import clientConfig from './config/client-config';
+import imageUrlBuilder from '@sanity/image-url';
 
 export const revalidate = true;
+
+const builder = imageUrlBuilder(clientConfig);
+
+export function urlFor(source: any) {
+  return builder.image(source).fit('max').auto('format');
+}
 
 export async function getProjects(limit?: number): Promise<Project[]> {
   try {
