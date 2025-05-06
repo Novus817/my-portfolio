@@ -70,6 +70,8 @@ export default async function Project({ params }: Props) {
           height={1080}
           sizes="(max-width: 768px) 100vw, 1920px"
           className="project-detail-img"
+          placeholder="blur"
+          blurDataURL={urlFor(project.image).width(20).quality(20).url()}
         />
       )}
     </div>

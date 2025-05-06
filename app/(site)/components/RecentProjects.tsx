@@ -26,6 +26,8 @@ export default async function RecentProjects({ projects }: Props) {
                 height={300}
                 sizes="(max-width: 768px) 100vw, 750px"
                 className="project-img"
+                placeholder="blur"
+                blurDataURL={urlFor(project.image).width(20).quality(20).url()}
               />
             )}
             <div className="project-name">{project.name}</div>
