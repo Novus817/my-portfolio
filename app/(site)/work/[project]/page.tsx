@@ -22,6 +22,13 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: `Anthony Marrello | Portfolio | ${project.name}`,
     description: `A portfolio project of mine for ${project.name}`,
+    openGraph: {
+      title: `Anthony Marrello | Portfolio | ${project.name}`,
+      description: `A portfolio project of mine for ${project.name}`,
+      images: project.image
+        ? [{ url: urlFor(project.image).url(), alt: project.alt || project.name }]
+        : [],
+    },
   };
 }
 
