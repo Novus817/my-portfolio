@@ -24,7 +24,7 @@ export default async function RecentProjects({ projects }: Props) {
                 alt={project.alt || project.name}
                 width={750}
                 height={300}
-                sizes="(max-width: 768px) 100vw, 750px"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="project-img"
                 placeholder="blur"
                 blurDataURL={urlFor(project.image).width(20).quality(20).url()}
