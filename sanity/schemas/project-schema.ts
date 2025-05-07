@@ -24,6 +24,12 @@ const project = {
           name: 'alt',
           title: 'Alt',
           type: 'string',
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          name: 'caption',
+          title: 'Caption',
+          type: 'string',
         },
       ],
     },
