@@ -20,6 +20,30 @@ const page = {
       type: 'array',
       of: [{ type: 'block' }],
     },
+    {
+      name: 'seo',
+      title: 'SEO',
+      type: 'object',
+      fields: [
+        {
+          name: 'seoTitle',
+          title: 'SEO Title',
+          type: 'string',
+        },
+        {
+          name: 'seoDescription',
+          title: 'SEO Description',
+          type: 'text',
+        },
+        {
+          name: 'seoImage',
+          title: 'SEO Image',
+          type: 'image',
+          options: { hotspot: true },
+          fields: [{ name: 'alt', title: 'Alt', type: 'string' }],
+        },
+      ],
+    },
   ],
 };
 
