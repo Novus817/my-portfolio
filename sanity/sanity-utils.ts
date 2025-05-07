@@ -81,7 +81,8 @@ export async function getPage(slug: string): Promise<Page> {
         _createdAt,
         title,
         "slug": slug.current,
-        content
+        content,
+        seo { seoTitle, seoDescription, "seoImage": seoImage.asset->url, "seoImageAlt": seoImage.alt }
       }`,
       { slug },
     );
