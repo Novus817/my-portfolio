@@ -142,7 +142,7 @@ p {
 
 .main-section {
   @apply py-5 sm:py-10 flex;
-  min-height: 100vh;
+  height: 100%;
 }
 
 /* recent projects section */
