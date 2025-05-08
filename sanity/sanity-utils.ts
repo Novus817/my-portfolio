@@ -19,7 +19,7 @@ export async function getProjects(limit?: number): Promise<Project[]> {
       _createdAt,
       name,
       "slug": slug.current,
-      "image": image.asset->url,
+      image,
       "alt": image.alt,
       "caption": image.caption,
       url,
@@ -32,7 +32,7 @@ export async function getProjects(limit?: number): Promise<Project[]> {
     return [];
   }
 }
-
+//"image": image.asset->url,
 export async function getProject(slug: string): Promise<Project> {
   try {
     const project = await createClient(clientConfig).fetch(
@@ -41,7 +41,7 @@ export async function getProject(slug: string): Promise<Project> {
         _createdAt,
         name,
         "slug": slug.current,
-        "image": image.asset->url,
+        image,
         "alt": image.alt,
         "caption": image.caption,
         url,
