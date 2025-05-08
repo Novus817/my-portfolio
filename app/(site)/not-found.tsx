@@ -1,4 +1,17 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Anthony Marrello | Portfolio | Not Found',
+  description: 'The requested page was not found.',
+  openGraph: {
+    title: 'Page Not Found',
+    description: 'The requested page was not found.',
+    images: [{ url: '/default-og-image.png', alt: 'Not Found' }],
+    url: 'https://anthonymarrello.com/404',
+    type: 'website',
+  },
+};
 
 export default function Custom404() {
   return (
