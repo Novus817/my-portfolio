@@ -141,8 +141,8 @@ p {
 }
 
 .main-section {
-  @apply py-5 sm:py-10 flex h-screen;
-  height: 100%;
+  @apply py-5 sm:py-10 flex;
+  min-height: 100vh;
 }
 
 /* recent projects section */
