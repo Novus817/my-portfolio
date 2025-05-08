@@ -1,4 +1,4 @@
-import { getPage, getProjects } from '@/sanity/sanity-utils';
+import { getPage, getProjects, urlFor } from '@/sanity/sanity-utils';
 import { notFound } from 'next/navigation';
 import AboutPage from '../components/AboutPage';
 import ContactPage from '../components/ContactPage';
@@ -10,6 +10,10 @@ type Props = {
 
 export async function generateMetadata({ params }: Props) {
   const page = await getPage(params.slug);
+  const projects = params.slug === 'work' ? await getProjects(1) : null; // Optional: for work page image
+  const ogImage = projects?.[0]?.image
+    ? urlFor(projects[0].image).url()
+    : '/default-og-image.png'; // Fallback image
 
   if (!page) {
     return {
@@ -21,6 +25,13 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: `Anthony Marrello | Portfolio | ${page.title}`,
     description: `My portfolio page for ${page.title}`,
+    openGraph: {
+      title: `Anthony Marrello | Portfolio | ${page.title}`,
+      description: `Explore my portfolio page for ${page.title}.`,
+      images: [{ url: ogImage, alt: page.title }],
+      url: `https://anthonymarrello.com/${page.slug}`, // Replace with your domain
+      type: 'website',
+    },
   };
 }
 
@@ -37,11 +48,8 @@ export default async function Page({ params }: Props) {
   return (
     <div>
       <h1 className="page-title">{page.title}</h1>
-
       {page?.slug === 'about' && <AboutPage content={page.content} />}
-
       {page?.slug === 'contact' && <ContactPage content={page.content} />}
-
       {page?.slug === 'work' && (
         <WorkPage content={page.content} projects={projects} />
       )}
