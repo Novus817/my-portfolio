@@ -19,16 +19,21 @@ export default async function RecentProjects({ projects }: Props) {
             className="project-link"
           >
             {project.image && (
-              <Image
-                src={urlFor(project.image).width(750).quality(80).url()}
-                alt={project.alt || project.name}
-                width={750}
-                height={300}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="project-img"
-                placeholder="blur"
-                blurDataURL={urlFor(project.image).width(20).quality(20).url()}
-              />
+              <div>
+                <Image
+                  src={urlFor(project.image).width(750).quality(80).url()}
+                  alt={project.alt || project.name}
+                  width={750}
+                  height={300}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="project-img"
+                  placeholder="blur"
+                  blurDataURL={urlFor(project.image).width(20).quality(20).url()}
+                />
+                {project.caption && (
+                  <p className="text-sm text-gray-600">{project.caption}</p>
+                )}
+              </div>
             )}
             <div className="project-name">{project.name}</div>
           </Link>
