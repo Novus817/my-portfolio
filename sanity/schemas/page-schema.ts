@@ -40,7 +40,14 @@ const page = {
           title: 'SEO Image',
           type: 'image',
           options: { hotspot: true },
-          fields: [{ name: 'alt', title: 'Alt', type: 'string' }],
+          fields: [
+            {
+              name: 'alt',
+              title: 'Alt',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            },
+          ],
         },
       ],
     },
