@@ -6,4 +6,10 @@ export type Page = {
   title: string;
   slug: string;
   content: PortableTextBlock[];
+  seo?: {
+    seoTitle?: string;
+    seoDescription?: string;
+    seoImage?: string;
+    seoImageAlt?: string;
+  };
 };
