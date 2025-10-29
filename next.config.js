@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+
+console.log('✅ NEXT CONFIG LOADED');
 const nextConfig = {
   async headers() {
     return [
@@ -27,6 +29,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'cdn.sanity.io',
         port: '',
+        pathname: '/**',
       },
     ],
   },

@@ -1,5 +1,6 @@
 import '../globals.css';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 
@@ -31,6 +32,7 @@ export default async function RootLayout({
       <body>
         <Header />
         <main className="main-section">{children}</main>
+        <Footer />
       </body>
     </html>
   );
