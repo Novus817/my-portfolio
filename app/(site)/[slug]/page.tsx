@@ -5,15 +5,17 @@ import ContactPage from '../components/ContactPage';
 import WorkPage from '../components/WorkPage';
 
 type Props = {
-  params: { slug: string; title?: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props) {
-  const page = await getPage(params.slug);
-  const projects = params.slug === 'work' ? await getProjects(1) : null; // Optional: for work page image
+  const { slug } = await params;
+
+  const page = await getPage(slug);
+  const projects = slug === 'work' ? await getProjects(1) : null;
   const ogImage = projects?.[0]?.image
     ? urlFor(projects[0].image).url()
-    : '/default-og-image.png'; // Fallback image
+    : '/default-og-image.png';
 
   if (!page) {
     return {
@@ -29,28 +31,29 @@ export async function generateMetadata({ params }: Props) {
       title: `Anthony Marrello | Portfolio | ${page.title}`,
       description: `Explore my portfolio page for ${page.title}.`,
       images: [{ url: ogImage, alt: page.title }],
-      url: `https://anthonymarrello.com/${page.slug}`, // Replace with your domain
+      url: `https://anthonymarrello.com/${page.slug}`,
       type: 'website',
     },
   };
 }
 
 export default async function Page({ params }: Props) {
-  const page = await getPage(params.slug);
+  const { slug } = await params;
+
+  const page = await getPage(slug);
 
   if (!page) {
     return notFound();
   }
 
-  // Fetch projects only if the slug is 'work'
   const projects = page.slug === 'work' ? await getProjects() : null;
 
   return (
     <div>
       <h1 className="page-title">{page.title}</h1>
-      {page?.slug === 'about' && <AboutPage content={page.content} />}
-      {page?.slug === 'contact' && <ContactPage content={page.content} />}
-      {page?.slug === 'work' && (
+      {page.slug === 'about' && <AboutPage content={page.content} />}
+      {page.slug === 'contact' && <ContactPage content={page.content} />}
+      {page.slug === 'work' && (
         <WorkPage content={page.content} projects={projects} />
       )}
     </div>
