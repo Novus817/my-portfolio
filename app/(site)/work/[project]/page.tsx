@@ -6,11 +6,12 @@ import { notFound } from 'next/navigation';
 import GoBackButton from '../../components/GoBackButton';
 
 type Props = {
-  params: { project: string };
+  params: Promise<{ project: string }>;
 };
 
 export async function generateMetadata({ params }: Props) {
-  const project = await getProject(params.project);
+  const { project: projectSlug } = await params;
+  const project = await getProject(projectSlug);
 
   if (!project) {
     return {
@@ -33,7 +34,8 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function Project({ params }: Props) {
-  const project = await getProject(params.project);
+  const { project: projectSlug } = await params;
+  const project = await getProject(projectSlug);
 
   if (!project) {
     return notFound();
