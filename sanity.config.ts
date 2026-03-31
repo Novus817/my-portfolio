@@ -1,15 +1,18 @@
+'use client';
+
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
 import schemas from './sanity/schemas';
+import { apiVersion, dataset, projectId } from './sanity/env';
 
 const config = defineConfig({
-  projectId: 'j4qcwpjn',
-  dataset: 'production',
+  projectId,
+  dataset,
   title: 'My Portfolio Website',
-  apiVersion: '2023-07-09',
+  apiVersion,
   basePath: '/admin',
-  plugins: [structureTool(), visionTool()],
+  plugins: [structureTool(), visionTool({ defaultApiVersion: apiVersion })],
   schema: { types: schemas },
 });
 
