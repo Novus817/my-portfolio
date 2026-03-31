@@ -1,12 +1,12 @@
 import { createClient, groq } from 'next-sanity';
+import { createImageUrlBuilder } from '@sanity/image-url';
 import { Project } from '@/types/Project';
 import { Page } from '@/types/Page';
 import clientConfig from './config/client-config';
-import imageUrlBuilder from '@sanity/image-url';
 
 export const revalidate = true;
 
-const builder = imageUrlBuilder(clientConfig);
+const builder = createImageUrlBuilder(clientConfig);
 
 export function urlFor(source: any) {
   return builder.image(source).fit('max').auto('format');
@@ -25,6 +25,7 @@ export async function getProjects(limit?: number): Promise<Project[]> {
       url,
       content
     }${limit ? `[0...${limit}]` : ''}`;
+
     const projects = await createClient(clientConfig).fetch(query);
     return projects || [];
   } catch (error) {
@@ -32,8 +33,8 @@ export async function getProjects(limit?: number): Promise<Project[]> {
     return [];
   }
 }
-//"image": image.asset->url,
-export async function getProject(slug: string): Promise<Project> {
+
+export async function getProject(slug: string): Promise<Project | null> {
   try {
     const project = await createClient(clientConfig).fetch(
       groq`*[_type == "project" && slug.current == $slug][0]{
@@ -49,6 +50,7 @@ export async function getProject(slug: string): Promise<Project> {
       }`,
       { slug },
     );
+
     return project || null;
   } catch (error) {
     console.error('Error fetching project:', error);
@@ -66,6 +68,7 @@ export async function getPages(): Promise<Page[]> {
         "slug": slug.current
       }`,
     );
+
     return pages || [];
   } catch (error) {
     console.error('Error fetching pages:', error);
@@ -73,7 +76,7 @@ export async function getPages(): Promise<Page[]> {
   }
 }
 
-export async function getPage(slug: string): Promise<Page> {
+export async function getPage(slug: string): Promise<Page | null> {
   try {
     const page = await createClient(clientConfig).fetch(
       groq`*[_type == "page" && slug.current == $slug][0]{
@@ -82,10 +85,16 @@ export async function getPage(slug: string): Promise<Page> {
         title,
         "slug": slug.current,
         content,
-        seo { seoTitle, seoDescription, "seoImage": seoImage.asset->url, "seoImageAlt": seoImage.alt }
+        seo {
+          seoTitle,
+          seoDescription,
+          "seoImage": seoImage.asset->url,
+          "seoImageAlt": seoImage.alt
+        }
       }`,
       { slug },
     );
+
     return page || null;
   } catch (error) {
     console.error('Error fetching page:', error);
