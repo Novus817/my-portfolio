@@ -1,7 +1,6 @@
 import '../globals.css';
 import Header from './components/Header';
-import Footer from './components/Footer';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 
 const roboto = Roboto({
@@ -10,6 +9,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://anthonymarrello.com'),
   title: 'Anthony Marrello | Portfolio',
   description:
     'My portfolio project display. Portfolio created with React/Next.js/TypeScript + Sanity.io',
