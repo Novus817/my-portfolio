@@ -1,6 +1,6 @@
 import { createClient, groq } from 'next-sanity';
 import { createImageUrlBuilder } from '@sanity/image-url';
-import type { ImageUrlSource } from '@sanity/image-url';
+import ImageUrlSource from '@sanity/image-url';
 import { Project } from '@/types/Project';
 import { Page } from '@/types/Page';
 import clientConfig from './config/client-config';
