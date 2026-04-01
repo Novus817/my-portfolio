@@ -9,9 +9,9 @@
   --foreground: #f3f4f6;
   --muted: #a1a1aa;
   --border: rgba(255, 255, 255, 0.1);
-  --accent: #f59e0b;
-  --accent-strong: #d97706;
-  --max-width: 80rem;
+
+  --accent: #ea580c;
+  --accent-strong: #c2410c;
 }
 
 html {
@@ -41,8 +41,10 @@ p {
 }
 
 .site-shell {
-  width: min(100% - 2rem, var(--max-width));
+  width: min(100%, var(--max-width));
   margin-inline: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .main-section {
@@ -54,9 +56,8 @@ p {
 
 .header-section {
   @apply flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between;
-  width: min(100% - 2rem, var(--max-width));
-  margin-inline: auto;
-  padding-top: 1.25rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .logo-link {
@@ -83,7 +84,7 @@ p {
 
 .heading-text {
   @apply text-center sm:text-left font-extrabold tracking-tight;
-  font-size: clamp(3rem, 8vw, 5.75rem);
+  font-size: clamp(2.75rem, 7vw, 4rem);
   line-height: 0.95;
   margin-bottom: 1rem;
 }
