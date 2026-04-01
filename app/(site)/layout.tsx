@@ -31,7 +31,9 @@ export default async function RootLayout({
     <html lang="en" className={roboto.className}>
       <body>
         <Header />
-        <main className="main-section">{children}</main>
+        <main className="main-section">
+          <div className="site-shell">{children}</div>
+        </main>
       </body>
     </html>
   );
