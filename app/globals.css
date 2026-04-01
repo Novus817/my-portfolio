@@ -195,6 +195,11 @@ p {
 
 /* projects */
 
+.page-title {
+  @apply text-center mb-10;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
 .recent-projects-heading,
 .page-title,
 .project-detail-title {
@@ -263,7 +268,9 @@ p {
 
 .content-section {
   @apply mt-6;
-  max-width: 70ch;
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .about-img,
