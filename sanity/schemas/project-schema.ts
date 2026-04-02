@@ -34,6 +34,24 @@ const project = {
       ],
     },
     {
+      name: 'summary',
+      title: 'Summary',
+      type: 'text',
+      rows: 3,
+      description:
+        'Short portfolio card summary and intro text for case study pages.',
+      validation: (Rule) => Rule.max(180),
+    },
+    {
+      name: 'techStack',
+      title: 'Tech Stack',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: {
+        layout: 'tags',
+      },
+    },
+    {
       name: 'url',
       title: 'URL',
       type: 'url',
