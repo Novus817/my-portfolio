@@ -48,14 +48,20 @@ export default async function Page({ params }: Props) {
 
   const projects = page.slug === 'work' ? await getProjects() : null;
 
+  if (page.slug === 'work') {
+    return (
+      <section className="page-shell">
+        <h1 className="page-title">{page.title}</h1>
+        <WorkPage content={page.content} projects={projects} />
+      </section>
+    );
+  }
+
   return (
     <div className="content-section">
       <h1 className="page-title">{page.title}</h1>
       {page.slug === 'about' && <AboutPage content={page.content} />}
       {page.slug === 'contact' && <ContactPage content={page.content} />}
-      {page.slug === 'work' && (
-        <WorkPage content={page.content} projects={projects} />
-      )}
     </div>
   );
 }

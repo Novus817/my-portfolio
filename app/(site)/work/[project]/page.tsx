@@ -22,10 +22,12 @@ export async function generateMetadata({ params }: Props) {
 
   return {
     title: `Anthony Marrello | Portfolio | ${project.name}`,
-    description: `A portfolio project of mine for ${project.name}`,
+    description:
+      project.summary || `A portfolio project of mine for ${project.name}`,
     openGraph: {
       title: `Anthony Marrello | Portfolio | ${project.name}`,
-      description: `A portfolio project of mine for ${project.name}`,
+      description:
+        project.summary || `A portfolio project of mine for ${project.name}`,
       images: project.image
         ? [{ url: urlFor(project.image).url(), alt: project.alt || project.name }]
         : [],
@@ -42,41 +44,67 @@ export default async function Project({ params }: Props) {
   }
 
   return (
-    <div>
-      <header className="project-detail-header">
-        <div className="project-detail-nav">
-          <GoBackButton />
-          <Link
-            href={`${project.url}`}
-            title="View Project"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="view-project-link"
-          >
-            View Project
-          </Link>
+    <article className="project-detail-page">
+      <div className="project-detail-shell">
+        <header className="project-detail-header">
+          <div className="project-detail-nav">
+            <GoBackButton />
+
+            {project.url && (
+              <Link
+                href={project.url}
+                title="View Project"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="view-project-link"
+              >
+                View Live Project
+              </Link>
+            )}
+          </div>
+
+          <div className="project-detail-heading">
+            <h1 className="project-detail-title">{project.name}</h1>
+
+            {project.summary && (
+              <p className="project-detail-summary">{project.summary}</p>
+            )}
+
+            {project.techStack?.length ? (
+              <ul
+                className="project-detail-tags"
+                aria-label={`${project.name} tech stack`}
+              >
+                {project.techStack.map((item) => (
+                  <li key={item} className="project-detail-tag">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
+        </header>
+
+        {project.image && (
+          <div className="project-detail-media">
+            <Image
+              src={urlFor(project.image).width(1600).quality(80).url()}
+              alt={project.alt || project.name}
+              width={1600}
+              height={900}
+              sizes="(max-width: 768px) 100vw, 1000px"
+              className="project-detail-img"
+              placeholder="blur"
+              blurDataURL={urlFor(project.image).width(20).quality(20).url()}
+            />
+          </div>
+        )}
+
+        <div className="project-detail-content content-narrow">
+          <PortableText value={project.content} />
         </div>
-
-        <h1 className="project-detail-title">{project.name}</h1>
-      </header>
-
-      <div className="mt-5">
-        <PortableText value={project.content} />
       </div>
-
-      {project.image && (
-        <Image
-          src={urlFor(project.image).width(1920).quality(80).url()}
-          alt={project.alt || project.name}
-          width={1920}
-          height={1080}
-          sizes="(max-width: 768px) 100vw, 1280px"
-          className="project-detail-img"
-          placeholder="blur"
-          blurDataURL={urlFor(project.image).width(20).quality(20).url()}
-        />
-      )}
-    </div>
+    </article>
   );
 }
 

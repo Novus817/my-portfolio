@@ -4,11 +4,10 @@ import SpecialtySkills from './components/SpecialtySkills';
 import RecentProjects from './components/RecentProjects';
 
 export async function generateMetadata() {
-  // Fetch one project for an image
   const projects = await getProjects(1);
   const heroImage = projects[0]?.image
     ? urlFor(projects[0].image).url()
-    : '/default-og-image.png'; // Fallback image
+    : '/default-og-image.png';
 
   return {
     title: 'Anthony Marrello | Portfolio',
@@ -26,15 +25,14 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-  // Fetch 3 newest projects
   const projects = await getProjects(3);
 
   return (
-    <div className="container mx-auto">
+    <>
       <IntroSection />
       <SpecialtySkills />
       <RecentProjects projects={projects} />
-    </div>
+    </>
   );
 }
 
