@@ -13,7 +13,7 @@ export default async function ContactPage({ content }: Props) {
     <div className="contact-wrap">
       {content && <PortableText value={content} />}
       <Link href="mailto:apm817@gmail.com" className="contact-link">
-        <FaEnvelope className="contact-icon" />
+        <FaEnvelope className="contact-icon" size={50} />
       </Link>
       <Image
         src="/dev-graphic.svg"

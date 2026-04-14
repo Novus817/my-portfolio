@@ -423,6 +423,11 @@ p {
   margin-right: auto;
 }
 
+.contact-link {
+  display: inline-block;
+  margin: 1rem 0;
+}
+
 .about-img,
 .contact-img,
 .project-detail-img {
