@@ -2,6 +2,7 @@ import { createClient, groq } from 'next-sanity';
 import { createImageUrlBuilder } from '@sanity/image-url';
 import { Project } from '@/types/Project';
 import { Page } from '@/types/Page';
+import { HomePage } from '@/types/HomePage';
 import clientConfig from './config/client-config';
 
 export const revalidate = true;
@@ -100,6 +101,32 @@ export async function getPage(slug: string): Promise<Page | null> {
     return page || null;
   } catch (error) {
     console.error('Error fetching page:', error);
+    return null;
+  }
+}
+
+export async function getHomePage(): Promise<HomePage | null> {
+  try {
+    const homePage = await createClient(clientConfig).fetch(
+      groq`*[_type == "homePage"][0]{
+        _id,
+        title,
+        intro {
+          eyebrow,
+          heading,
+          headingHighlight,
+          description,
+          primaryButtonText,
+          primaryButtonHref,
+          secondaryButtonText,
+          secondaryButtonHref
+        }
+      }`,
+    );
+
+    return homePage || null;
+  } catch (error) {
+    console.error('Error fetching home page:', error);
     return null;
   }
 }

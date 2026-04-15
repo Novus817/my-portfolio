@@ -1,4 +1,4 @@
-import { getProjects, urlFor } from '@/sanity/sanity-utils';
+import { getHomePage, getProjects, urlFor } from '@/sanity/sanity-utils';
 import IntroSection from './components/IntroSection';
 import SpecialtySkills from './components/SpecialtySkills';
 import RecentProjects from './components/RecentProjects';
@@ -25,11 +25,11 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-  const projects = await getProjects(3);
+  const [homePage, projects] = await Promise.all([getHomePage(), getProjects(3)]);
 
   return (
     <>
-      <IntroSection />
+      <IntroSection intro={homePage?.intro} />
       <SpecialtySkills />
       <RecentProjects projects={projects} />
     </>
