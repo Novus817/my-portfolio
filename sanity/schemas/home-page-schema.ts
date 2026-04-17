@@ -24,13 +24,11 @@ const homePage = {
           name: 'heading',
           title: 'Heading',
           type: 'string',
-          description: 'Main heading before highlighted text.',
         },
         {
           name: 'headingHighlight',
           title: 'Heading Highlight',
           type: 'string',
-          description: 'Highlighted part of the heading.',
         },
         {
           name: 'description',
@@ -47,7 +45,6 @@ const homePage = {
           name: 'primaryButtonHref',
           title: 'Primary Button Link',
           type: 'string',
-          description: 'Example: /work',
         },
         {
           name: 'secondaryButtonText',
@@ -58,11 +55,17 @@ const homePage = {
           name: 'secondaryButtonHref',
           title: 'Secondary Button Link',
           type: 'string',
-          description: 'Example: /contact',
         },
       ],
     },
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Homepage',
+      };
+    },
+  },
 };
 
 export default homePage;

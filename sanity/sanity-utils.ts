@@ -108,7 +108,7 @@ export async function getPage(slug: string): Promise<Page | null> {
 export async function getHomePage(): Promise<HomePage | null> {
   try {
     const homePage = await createClient(clientConfig).fetch(
-      groq`*[_type == "homePage"][0]{
+      groq`*[_type == "homePage" && _id == "homePage"][0]{
         _id,
         title,
         intro {
