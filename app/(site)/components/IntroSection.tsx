@@ -35,18 +35,18 @@ export default function IntroSection({ intro }: IntroSectionProps) {
 
   return (
     <section className="py-10 sm:py-16">
-      <p className="mb-4 text-sm uppercase tracking-[0.3em] text-zinc-400">
+      <p className="mb-4 text-sm uppercase tracking-[0.3em] text-zinc-400 fade-up delay-1">
         {eyebrow}
       </p>
 
-      <h1 className="heading-text">
+      <h1 className="heading-text fade-up delay-2">
         {heading}
         <span className="heading-span">{headingHighlight}</span>.
       </h1>
 
-      <p className="tagline-text max-w-2xl">{description}</p>
+      <p className="tagline-text max-w-2xl fade-up delay-3">{description}</p>
 
-      <div className="flex flex-col gap-4 sm:flex-row">
+      <div className="flex flex-col gap-4 sm:flex-row fade-up delay-4">
         <Link
           href={primaryButtonHref}
           className="inline-flex items-center justify-center rounded-xl bg-amber-400 px-5 py-3 font-semibold text-zinc-900 transition hover:bg-amber-300"
