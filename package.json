@@ -40,7 +40,8 @@
     "@babel/plugin-transform-modules-systemjs": "7.29.4",
     "dompurify": "3.4.0",
     "uuid": "13.0.1",
-    "postcss": "8.5.10"
+    "postcss": "8.5.10",
+    "esbuild": "0.28.1"
   },
   "engines": {
     "node": ">=20.19.0 <21"
