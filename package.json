@@ -46,7 +46,8 @@
     "ws": "8.21.0",
     "markdown-it": "14.2.0",
     "js-yaml": "4.2.0",
-    "@babel/core": "7.29.6"
+    "@babel/core": "7.29.6",
+    "undici": "6.27.0"
   },
   "engines": {
     "node": ">=20.19.0 <21"
