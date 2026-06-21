@@ -63,7 +63,7 @@ export default async function RecentProjects({ projects }: Props) {
               ) : null}
 
               <div className="project-card-footer">
-                <span className="project-card-cta">View Case Study</span>
+                <span className="project-card-cta">View Project Details</span>
                 <span className="project-card-arrow" aria-hidden="true">
                   →
                 </span>
