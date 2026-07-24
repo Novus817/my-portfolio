@@ -4,14 +4,11 @@ import {
   FaGithub,
   FaNode,
   FaEnvelope,
-  FaCss3Alt,
-  FaHtml5,
-  FaJs,
   FaReact,
   FaCircleInfo,
   FaCode,
 } from 'react-icons/fa6';
-import { SiNextdotjs } from 'react-icons/si';
+import { SiNextdotjs, SiTypescript } from 'react-icons/si';
 
 export default function SpecialtySkills() {
   return (
@@ -42,9 +39,7 @@ export default function SpecialtySkills() {
         <div className="skills">
           <span className="skills-intro">Specialty Skills Include:</span>
           <span className="skills-main">
-            <FaHtml5 className="specialty-icon" />{' '}
-            <FaCss3Alt className="specialty-icon" />{' '}
-            <FaJs className="specialty-icon" />{' '}
+            <SiTypescript className="specialty-icon" />{' '}
             <FaReact className="specialty-icon" />{' '}
             <SiNextdotjs className="specialty-icon" />{' '}
             <FaNode className="specialty-icon" />
