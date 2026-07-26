@@ -50,7 +50,8 @@
     "adm-zip": "0.6.0",
     "json-2-csv": "5.5.11",
     "linkify-it": "5.0.2",
-    "sharp": "0.35.3"
+    "sharp": "0.35.3",
+    "postcss": "$postcss"
   },
   "engines": {
     "node": ">=20.19.0 <21"
