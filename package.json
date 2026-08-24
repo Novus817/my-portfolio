@@ -52,7 +52,8 @@
     "linkify-it": "5.0.2",
     "sharp": "0.35.3",
     "postcss": "$postcss",
-    "valibot": "1.4.2"
+    "valibot": "1.4.2",
+    "nanoid": "5.1.16"
   },
   "engines": {
     "node": ">=20.19.0 <21"
