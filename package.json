@@ -46,7 +46,7 @@
     "markdown-it": "14.2.0",
     "js-yaml": "4.3.1",
     "@babel/core": "7.29.6",
-    "undici": "6.27.0",
+    "undici": "6.28.0",
     "adm-zip": "0.6.0",
     "json-2-csv": "5.5.11",
     "linkify-it": "5.0.2",
