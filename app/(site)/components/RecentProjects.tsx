@@ -11,10 +11,10 @@ export default async function RecentProjects({ projects }: Props) {
   return (
     <section className="recent-projects-section">
       <div className="section-heading-wrap">
-        <h2 className="recent-projects-heading">Recent Projects</h2>
+        <h2 className="recent-projects-heading">Selected Work</h2>
         <p className="section-copy">
-          A selection of recent work focused on modern front-end development, UI
-          implementation, and content-driven web experiences.
+          A selection of projects exploring modern application development,
+          thoughtful user interfaces, and maintainable web experiences.
         </p>
       </div>
 

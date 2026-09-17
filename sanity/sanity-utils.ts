@@ -25,6 +25,8 @@ export async function getProjects(limit?: number): Promise<Project[]> {
       image,
       "alt": image.alt,
       "caption": image.caption,
+      summary,
+      techStack,
       url,
       content
     }${limit ? `[0...${limit}]` : ''}`;
@@ -48,6 +50,8 @@ export async function getProject(slug: string): Promise<Project | null> {
         image,
         "alt": image.alt,
         "caption": image.caption,
+        summary,
+        techStack,
         url,
         content
       }`,

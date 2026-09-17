@@ -30,8 +30,8 @@ export default async function Home() {
   return (
     <>
       <IntroSection intro={homePage?.intro} />
-      <SpecialtySkills />
       <RecentProjects projects={projects} />
+      <SpecialtySkills />
     </>
   );
 }
