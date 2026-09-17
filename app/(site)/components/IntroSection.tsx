@@ -14,52 +14,44 @@ type IntroSectionProps = {
 };
 
 export default function IntroSection({ intro }: IntroSectionProps) {
-  const eyebrow =
-    intro?.eyebrow ?? 'Front-End Developer • React • Next.js • TypeScript';
+  const eyebrow = intro?.eyebrow ?? 'Full-Stack Developer';
 
-  const heading =
-    intro?.heading ?? 'Building modern, performant web experiences with';
+  const heading = intro?.heading ?? 'Building thoughtful digital experiences for';
 
-  const headingHighlight =
-    intro?.headingHighlight ?? ' thoughtful UI and clean code';
+  const headingHighlight = intro?.headingHighlight ?? ' the modern web';
 
   const description =
     intro?.description ??
-    'I’m Anthony Marrello, a developer with deep web experience focused on creating polished interfaces, scalable front-end architecture, and modern user experiences with React, Next.js, TypeScript, and headless CMS tools.';
+    'Experienced web developer focused on creating polished interfaces, maintainable applications, and thoughtful user experiences with modern front-end technologies.';
 
-  const primaryButtonText = intro?.primaryButtonText ?? 'View Projects';
+  const primaryButtonText = intro?.primaryButtonText ?? 'View My Work';
   const primaryButtonHref = intro?.primaryButtonHref ?? '/work';
 
-  const secondaryButtonText = intro?.secondaryButtonText ?? 'Contact Me';
-  const secondaryButtonHref = intro?.secondaryButtonHref ?? '/contact';
+  const secondaryButtonText = intro?.secondaryButtonText ?? 'About Me';
+  const secondaryButtonHref = intro?.secondaryButtonHref ?? '/about';
 
   return (
-    <section className="py-10 sm:py-16">
-      <p className="mb-4 text-sm uppercase tracking-[0.3em] text-zinc-400 fade-up delay-1">
-        {eyebrow}
-      </p>
+    <section className="hero-section">
+      <div className="hero-content">
+        <p className="hero-eyebrow fade-up delay-1">{eyebrow}</p>
 
-      <h1 className="heading-text fade-up delay-2">
-        {heading}
-        <span className="heading-span">{headingHighlight}</span>.
-      </h1>
+        <h1 className="hero-heading fade-up delay-2">
+          {heading}
+          <span className="hero-heading-accent">{headingHighlight}</span>.
+        </h1>
 
-      <p className="tagline-text max-w-2xl fade-up delay-3">{description}</p>
+        <p className="hero-description fade-up delay-3">{description}</p>
 
-      <div className="flex flex-col gap-4 sm:flex-row fade-up delay-4">
-        <Link
-          href={primaryButtonHref}
-          className="inline-flex items-center justify-center rounded-xl bg-amber-400 px-5 py-3 font-semibold text-zinc-900 transition hover:bg-amber-300"
-        >
-          {primaryButtonText}
-        </Link>
+        <div className="hero-actions fade-up delay-4">
+          <Link href={primaryButtonHref} className="hero-primary-action">
+            {primaryButtonText}
+          </Link>
 
-        <Link
-          href={secondaryButtonHref}
-          className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-5 py-3 font-semibold transition hover:bg-white/10"
-        >
-          {secondaryButtonText}
-        </Link>
+          <Link href={secondaryButtonHref} className="hero-secondary-action">
+            {secondaryButtonText}
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
       </div>
     </section>
   );
