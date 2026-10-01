@@ -58,6 +58,6 @@
     "browserslist": "4.28.8"
   },
   "engines": {
-    "node": ">=20.19.0 <21"
+    "node": "24.x"
   }
 }
