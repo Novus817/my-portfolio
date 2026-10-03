@@ -1,6 +1,6 @@
 import { getHomePage, getProjects, urlFor } from '@/sanity/sanity-utils';
 import IntroSection from './components/IntroSection';
-import SpecialtySkills from './components/SpecialtySkills';
+import Technologies from './components/Technologies';
 import RecentProjects from './components/RecentProjects';
 
 export async function generateMetadata() {
@@ -31,7 +31,7 @@ export default async function Home() {
     <>
       <IntroSection intro={homePage?.intro} />
       <RecentProjects projects={projects} />
-      <SpecialtySkills />
+      <Technologies />
     </>
   );
 }

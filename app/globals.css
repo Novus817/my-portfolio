@@ -197,83 +197,91 @@ p {
   }
 }
 
-/* skills */
+/* technologies */
 
-.skills-section {
-  @apply mx-auto mt-8 mb-12 p-6 sm:p-8;
-  max-width: 48rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 1.25rem;
+.technologies-section {
+  width: 100%;
+  padding: 7rem 0 3rem;
 }
 
-.skills-title,
-.skills-intro {
-  @apply text-center font-semibold;
-  color: var(--foreground);
+.technologies-heading {
+  max-width: 42rem;
 }
 
-.info-wrap {
-  @apply flex flex-col sm:flex-row items-center justify-center gap-6 mb-8;
-}
-
-.social {
-  @apply flex items-center gap-4;
-}
-
-.social-link {
-  @apply text-3xl;
-  color: var(--foreground);
-}
-
-.social-link-icon {
-  transition:
-    transform 0.2s ease,
-    color 0.2s ease;
-}
-
-.social-link-icon:hover {
+.technologies-eyebrow {
+  margin-bottom: 1rem;
   color: var(--accent);
-  transform: translateY(-2px);
-}
-
-.skills {
-  @apply flex flex-col items-center sm:items-start;
-}
-
-.skills-main {
-  @apply flex flex-wrap justify-center gap-2 mt-2;
-}
-
-.specialty-icon {
-  font-size: 1.875rem;
+  font-size: 0.8rem;
+  font-weight: 700;
   line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
-.icon-links {
-  @apply grid grid-cols-1 sm:grid-cols-3 gap-4;
+.technologies-title {
+  margin: 0;
+  color: var(--foreground);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
 }
 
-.icon-link {
-  @apply flex flex-col justify-center items-center text-sm font-medium;
-  min-height: 110px;
-  border-radius: 1rem;
-  border: 1px solid var(--border);
-  background: var(--surface-2);
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease;
+.technologies-description {
+  max-width: 38rem;
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
-.icon-link:hover {
-  transform: translateY(-4px);
-  border-color: rgba(245, 158, 11, 0.45);
-  background: rgba(255, 255, 255, 0.04);
+.technologies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 2.5rem 0 0;
+  list-style: none;
 }
 
-.nav-icon {
-  @apply mb-2 text-3xl;
+.technology-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 5.5rem;
+  padding: 1.25rem;
+  border-top: 1px solid var(--border);
+  color: var(--foreground);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.technology-icon {
+  flex-shrink: 0;
+  color: var(--accent);
+  font-size: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .technologies-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .technologies-section {
+    padding-top: 5rem;
+  }
+
+  .technologies-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 2rem;
+  }
+
+  .technology-item {
+    min-height: 4.75rem;
+  }
 }
 
 /* projects */
